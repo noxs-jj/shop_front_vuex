@@ -1,0 +1,17 @@
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+  state: {
+    basket: []
+  },
+  getters: {
+    basketProducts: state => {
+      return state.basket.length
+    }
+  },
+  mutations: {},
+  actions: {}
+})
