@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import ProductCatalogue from '@/components/ProductCatalogue'
+import ProductDetail from '@/components/ProductDetail'
 
 Vue.use(Router)
 
@@ -13,9 +13,9 @@ export default new Router({
       component: ProductCatalogue
     },
     {
-      path: '/hello-world',
-      name: 'HelloWorld',
-      component: HelloWorld
+      path: '/product/:ref',
+      name: 'ProductDetail',
+      component: ProductDetail
     }
   ]
 })

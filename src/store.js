@@ -21,16 +21,17 @@ export default new Vuex.Store({
     },
     getProductsList: state => {
       return state.productsList
+    },
+    getOneProduct: state => reference => {
+      return state.currentProductDetail
     }
   },
   mutations: {
-    PRODUCTS_FETCH_LIST: (state, products) => {
-      state.productsList = products.products
+    PRODUCTS_FETCH_LIST: (state, data) => {
+      state.productsList = data.products
     }
   },
   actions: {
-    actionFetchProductsCatalogue: context => {
-      productServiceFetchAllProducts(context)
-    }
+    actionFetchProductsCatalogue: context => { productServiceFetchAllProducts(context) }
   }
 })
