@@ -9,3 +9,6 @@
 ## How to start
   npm install -g yarn
   yarn run dev
+
+## Unit tests
+Steel in learning no unit test for now
