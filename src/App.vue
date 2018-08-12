@@ -7,7 +7,6 @@
           <span class="glyphicon glyphicon-shopping-cart"></span>
           {{ this.getBasketProductsCount }}
         </router-link>
-
       </div>
       <router-view/>
     </div>

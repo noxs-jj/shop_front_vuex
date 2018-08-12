@@ -1,16 +1,11 @@
 <template>
-  <div class="">
-    <div class="row">
-      <div class="col-xs-2">
-        {{ this.getProductQuantity(this.productReference) }}
-      </div>
-    </div>
+  <div>
     <div class="row">
       <div class="col-xs-12">
         <button
           v-on:click="addToBacket(reference, 1)"
           class="btn btn-small btn-block btn-success">
-            Add Basket<br/>{{ reference }}
+            Add Basket
         </button>
       </div>
     </div>
@@ -33,7 +28,7 @@ export default {
       this.quantity = this.getProductQuantity(this.productReference)
     },
     addToBacket (reference, quantity) {
-      store.dispatch('actionAddProductWithQuantityOnBasket', { 'reference': reference, 'quantity': quantity })
+      store.dispatch('actionAddProductWithQuantityOnBasket', { reference, quantity })
     }
   },
   watch: {

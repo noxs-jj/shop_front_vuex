@@ -13,8 +13,8 @@
         <h1>{{ this.product['name'] }}</h1>
       </div>
       <div class="col-xs-4">
-        <p class="lead">Price: {{ this.product['price'] }}</p>
-        <p class="lead">In basket: {{ this.getProductQuantity(this.product['reference']) }}</p>
+        <p class="lead">Price unit: {{ this.product['price'] }}</p>
+        <p class="lead">Quantity In basket: {{ this.getProductQuantity(this.product['reference']) }}</p>
       </div>
       <div class="col-xs-2">
         <AddProductBasketButton v-bind:productReference="this.$route.params.ref" />
@@ -61,6 +61,18 @@
     <div class="panel panel-default">
       <div class="panel-body">
         {{ this.product['long_description'] }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-4">
+        <p class="lead">Price unit: {{ this.product['price'] }}</p>
+      </div>
+      <div class="col-xs-4">
+        <p class="lead">Quantity In basket: {{ this.getProductQuantity(this.product['reference']) }}</p>
+      </div>
+      <div class="col-xs-2">
+        <AddProductBasketButton v-bind:productReference="this.$route.params.ref" />
       </div>
     </div>
 

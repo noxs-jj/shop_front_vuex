@@ -2,7 +2,12 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Cookie from 'js-cookie'
 import { productServiceFetchAllProducts } from '@/service/productService'
-import { basketServiceFetchBasket, basketServiceAddProductWithQuantity } from '@/service/basketService'
+import {
+  basketServiceFetchBasket,
+  basketServiceAddProductWithQuantity,
+  basketServiceDeleteProductOnBasket,
+  basketServiceRemoveOnUnitFromProductOnBasket
+} from '@/service/basketService'
 const uuidv1 = require('uuid/v1')
 
 Vue.use(Vuex)
@@ -54,6 +59,8 @@ export default new Vuex.Store({
     actionFetchBasket: context => { basketServiceFetchBasket(context) },
     actionUpdateBasket: context => data => { context.commit('BASKET_UPDATE', data.basket) },
     actionAddProductWithQuantityOnBasket (context, {reference, quantity}) { basketServiceAddProductWithQuantity(context, reference, quantity) },
+    actionDeleteProductOnBasket (context, reference) { basketServiceDeleteProductOnBasket(context, reference) },
+    actionRemoveOnUnitFromProductOnBasket (context, {reference, quantity}) { basketServiceRemoveOnUnitFromProductOnBasket(context, reference, quantity) },
     actionCreateOrUpdateCookieUserUUID: context => {
       let uuid = (Cookie.get('user_uuid') === undefined) ? uuidv1() : Cookie.get('user_uuid')
       Cookie.set('user_uuid', uuid, { expires: 30 })
