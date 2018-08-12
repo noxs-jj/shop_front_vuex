@@ -4,11 +4,11 @@
       <div class="col-xs-12 col-sm-6 col-md-4" v-for="(product, index) in this.getProductsList" :key="index">
         <div class="thumbnail">
 
-          <router-link :to="{ path: '/product/' + product['reference'] }">Go to Foo</router-link>
-
-          <a href="#" class="caption">
-            <img v-bind:src="product['images_preview_url']" v-bind:title="product['name']" v-bind:alt="product['name']">
-          </a>
+          <div class="caption">
+            <router-link :to="{ path: '/product/' + product['reference'] }">
+                <img v-bind:src="product['images_preview_url']" v-bind:title="product['name']" v-bind:alt="product['name']">
+            </router-link>
+          </div>
 
           <h3 class="text-center">{{ product['name'] }}</h3>
 
@@ -17,7 +17,7 @@
               <p class="lead">{{ product['price']}}</p>
             </div>
             <div class="col-xs-6">
-              <a href="#" class="btn btn-small btn-block btn-success">Add Basket</a>
+              <AddProductBasketButton v-bind:productReference="product['reference']" />
             </div>
           </div>
 
@@ -30,10 +30,15 @@
 </template>
 
 <script>
+import AddProductBasketButton from '@/components/AddProductBasketButton'
 import { mapGetters, mapActions } from 'vuex'
+import store from '@/store'
 
 export default {
   name: 'ProductCatalogue',
+  components: {
+    AddProductBasketButton
+  },
   computed: {
     ...mapGetters(['getProductsList'])
   },
@@ -42,7 +47,7 @@ export default {
   },
   beforeCreate () {
     if (this.$store.getters.getProductsList.length === 0) {
-      this.$store.dispatch('actionFetchProductsCatalogue')
+      store.dispatch('actionFetchProductsCatalogue')
     }
   }
 }

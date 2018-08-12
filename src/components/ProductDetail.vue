@@ -8,17 +8,22 @@
 
   <div v-else-if="this.product" class="row">
 
-      <div class="row">
-        <div class="col-xs-6">
-          <h1>{{ this.product['name'] }}</h1>
-        </div>
-        <div class="col-xs-4">
-          <p class="lead">{{ this.product['price'] }}</p>
-        </div>
-        <div class="col-xs-2">
-          <button class="btn btn-small btn-block btn-success">Add Basket</button>
-        </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <h1>{{ this.product['name'] }}</h1>
       </div>
+      <div class="col-xs-4">
+        <p class="lead">Price: {{ this.product['price'] }}</p>
+        <p class="lead">In basket: {{ this.getProductQuantity(this.product['reference']) }}</p>
+      </div>
+      <div class="col-xs-2">
+        <AddProductBasketButton v-bind:productReference="this.$route.params.ref" />
+      </div>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
 
     <div class="owncarousel">
       <div class="carousel slide">
@@ -63,10 +68,18 @@
 </template>
 
 <script>
+import AddProductBasketButton from '@/components/AddProductBasketButton'
+import { mapGetters } from 'vuex'
 const axios = require('axios')
 
 export default {
   name: 'ProductDetail',
+  components: {
+    AddProductBasketButton
+  },
+  computed: {
+    ...mapGetters(['getProductQuantity'])
+  },
   methods: {
     fetchData () {
       this.error = this.product = null

@@ -18,3 +18,4 @@ new Vue({
 })
 
 store.dispatch('actionCreateOrUpdateCookieUserUUID')
+store.dispatch('actionFetchBasket')
