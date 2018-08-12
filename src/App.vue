@@ -3,7 +3,11 @@
     <div class="container">
       <div class="jumbotron">
         <router-link :to="{ path: '/' }"><h1>Shop</h1></router-link>
-        {{ this.getBasketProductsCount }}
+        <router-link :to="{ path: '/basketview' }">
+          <span class="glyphicon glyphicon-shopping-cart"></span>
+          {{ this.getBasketProductsCount }}
+        </router-link>
+
       </div>
       <router-view/>
     </div>
