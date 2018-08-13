@@ -21,11 +21,11 @@ export const state = {
 export const getters = {
   getBasket: state => { return state.basket },
   getBasketProductsCount: state => {
-    if (state.basket === null) { return 0 }
+    if (state.basket === null || state.basket === undefined) { return 0 }
     return state.basket.products.length
   },
   getProductQuantity: state => reference => {
-    if (state.basket === null) { return 0 }
+    if (state.basket === null || state.basket === undefined) { return 0 }
     let result = state.basket.products.filter(x => x.product.reference === reference)
     if (result.length === 0) { return 0 }
     return result[0].quantity
