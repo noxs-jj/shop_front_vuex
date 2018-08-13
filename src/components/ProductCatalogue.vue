@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-4" v-for="(product, index) in this.getProductsList" :key="index">
         <div class="thumbnail">
@@ -10,7 +10,7 @@
             </router-link>
           </div>
 
-          <h3 class="text-center">{{ product['name'] }}</h3>
+          <h3 class="text-center" v-bind:id="'name_' + product['reference']">{{ product['name'] }}</h3>
 
           <div class="row">
             <div class="col-xs-6">

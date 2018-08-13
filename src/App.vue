@@ -5,7 +5,9 @@
         <router-link :to="{ path: '/' }"><h1>Shop</h1></router-link>
         <router-link :to="{ path: '/basketview' }">
           <span class="glyphicon glyphicon-shopping-cart"></span>
-          {{ this.getBasketProductsCount }}
+          <div id="basket-product-numbers">
+            {{ this.getBasketProductsCount }}
+          </div>
         </router-link>
       </div>
       <router-view/>

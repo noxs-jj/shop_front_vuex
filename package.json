@@ -7,12 +7,13 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "unit": "jest --config test/unit/jest.conf.js --coverage",
+    "unit": "jest --config test/unit/jest.conf.js",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit",
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@vue/test-utils": "^1.0.0-beta.24",
     "axios": "^0.18.0",
     "js-cookie": "^2.2.0",
     "uuid": "^3.3.2",
@@ -82,5 +83,9 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/"
+  }
 }
